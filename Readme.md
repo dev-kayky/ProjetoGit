@@ -1,2 +1,1 @@
-teste read me inicial
-alteração
+Este é um projeto simples de um Conversor de Moedas desenvolvido em Python com interface gráfica utilizando a biblioteca Tkinter. O objetivo principal deste projeto foi aplicar conceitos de programação procedural, manipulação de dados e construção de interfaces gráficas para criar uma ferramenta útil e funcional.
