@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 
+# Código princpal - Python
 TAXAS = {
     "BRL": {
         "USD": 0.19, "EUR": 0.17, "GBP": 0.15, "JPY": 29.00,
@@ -69,13 +70,20 @@ def limpar():
     entrada_valor.delete(0, tk.END)
     resultado.set("")
 
+# Janela do programa
 janela = tk.Tk()
 janela.title("Conversor de Moedas")
 janela.configure(bg="black")
+
+# Título da janela
 label_inicial = tk.Label(janela, text="Conversor de Moedas - Início", fg="white", bg="black")
 label_inicial.pack(padx=20, pady=20)
+
+# Frame principal
 frame = ttk.Frame(janela)
 frame.pack(padx=10, pady=10)
+
+# Combobox para o get
 moedas = list(TAXAS.keys())
 moeda_inicial_var = tk.StringVar(janela)
 moeda_final_var = tk.StringVar(janela)
@@ -91,10 +99,14 @@ label_moeda2.grid(row=1, column=0, padx=10, pady=10, sticky="w")
 combo_final = ttk.Combobox(frame, textvariable=moeda_final_var, values=moedas, width=10)
 combo_final.grid(row=1, column=1, padx=10, pady=10, sticky="ew")
 combo_final.set("USD")
+
+# Entrada do valor
 label_valor = ttk.Label(frame, text="Valor para a conversão:")
 label_valor.grid(row=2, column=0, padx=10, pady=10, sticky="w")
 entrada_valor = ttk.Entry(frame, width=15)
 entrada_valor.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
+
+# Botões da interface
 botoes = tk.Frame(janela, bg="black")
 botoes.pack(pady=10)
 tk.Button(botoes, text="Converter", command=converter, bg="white", fg="black").grid(row=0, column=0, padx=10)
@@ -104,4 +116,5 @@ tk.Label(janela, text="Resultado:", font=("Segoe UI", 11, "bold"), fg="white", b
 label_resultado = tk.Label(janela, textvariable=resultado, font=("Segoe UI", 12), fg="white", bg="gray20", padx=10, pady=5)
 label_resultado.pack(pady=5, padx=20, fill="x")
 
+# Abre a interface
 janela.mainloop()
