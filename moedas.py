@@ -48,15 +48,26 @@ def converter():
     try:
         valor = float(valor_str)
         if valor < 0:
-            messagebox.showerror("Erro", "O valor não pode ser negativo.")
+            messagebox.showerror("Erro!", "O valor não pode ser negativo.")
             return
     except ValueError:
-        messagebox.showerror("Erro", "Entrada inválida. Digite um número.")
+        messagebox.showerror("Erro!", "Entrada inválida. Digite um número.")
         return
     
     if moeda_inicial == moeda_final:
         resultado.set(f"{valor:.2f} {moeda_inicial}")
         return
+    
+    if moeda_inicial in TAXAS and moeda_final in TAXAS and moeda_final in TAXAS.get(moeda_inicial, {}):
+        taxa = TAXAS.get(moeda_inicial, {}).get(moeda_final)
+        valor_convertido = valor * taxa
+        resultado.set(f"{valor_convertido:.2f} {moeda_final}")
+    else:
+        messagebox.showerror("Erro!", "Não foi possível converter.")
+
+def limpar():
+    entrada_valor.delete(0, tk.END)
+    resultado.set("")
 
 janela = tk.Tk()
 janela.title("Conversor de Moedas")
